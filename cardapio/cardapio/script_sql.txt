@@ -1,0 +1,7 @@
+drop table food;
+
+select * from foods;
+
+insert into foods (id, title, image, price, type)
+values (4, 'oregano', null, 12, 'temperos');
+commit;
