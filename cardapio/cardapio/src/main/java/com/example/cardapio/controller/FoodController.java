@@ -2,7 +2,9 @@ package com.example.cardapio.controller;
 
 import com.example.cardapio.food.Food;
 import com.example.cardapio.food.FoodRepository;
+import com.example.cardapio.food.FoodResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,11 +17,14 @@ public class FoodController {
 
     @Autowired //Eu estou informando que deve fazer a injeção nessa variável
     private FoodRepository repository;
-    @GetMapping //Quando ele chamar o RequestMapping ele vai chamar esse método aq
-    public String getAll(){
 
-        List<Food> list = this.repository.findAll();
-        return list.get(0).getTitle();
+    //@CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping //Quando ele chamar o RequestMapping ele vai chamar esse método aq
+    public List<FoodResponseDTO> getAll(){
+
+        //O stream() é um filtro que se lança
+        List<FoodResponseDTO> listFood = this.repository.findAll().stream().map(FoodResponseDTO::new).toList();
+        return listFood;
     }
 
 
