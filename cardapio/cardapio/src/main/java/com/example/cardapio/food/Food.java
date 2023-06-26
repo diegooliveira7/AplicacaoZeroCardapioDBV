@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Food {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)// O correto é usar UUID para gerar valores aleatórios
     private Long id;
     private String title;
     private String image;

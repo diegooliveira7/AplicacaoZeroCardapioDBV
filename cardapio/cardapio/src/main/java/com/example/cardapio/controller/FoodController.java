@@ -24,7 +24,7 @@ public class FoodController {
         return;
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")// Para evitar erros com os hedear
     @GetMapping //Quando ele chamar o RequestMapping ele vai chamar esse método aq
     public List<FoodResponseDTO> getAll(){
 
